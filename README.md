@@ -35,3 +35,8 @@
     git remote add origin <这里是你创建的仓库地址, 因为我们用的是 ssh, 所以你的链接应该是 git@...github.com:...>
     git push
     ```
+
+- 安装 Bootstrap 和 Popper.js
+  ```bash
+  npm install bootstrap @popperjs/core
+  ```
