@@ -40,3 +40,12 @@
   ```bash
   npm install bootstrap @popperjs/core
   ```
+
+### 2025/05/21
+
+- 安装 laravel/ui
+    ```bash
+    composer require laravel/ui --dev
+    php artisan ui bootstrap
+    npm install
+    ```
