@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '首页')
+@section('title', config('app.name'))
 
 @section('content')
     <div class="container my-4 my-lg-5">
