@@ -49,7 +49,7 @@
     php artisan ui bootstrap
     npm install
     ```
-  
+
 - 修改 [package.json](package.json) 文件中的引入, 我们的项目使用 yarn 来管理前端资源, 修改完成之后运行
     ```bash
     rm package-lock.json
@@ -57,14 +57,14 @@
     yarn install
     yarn add @fortawesome/fontawesome-free
     ```
-  
+
 - 提交代码
     ```bash
     git add .
     git commit -m "增加字体图标, 该用 yarn 来管理前端资源"
     git push
     ```
-  
+
 - 安装 laravel ui:auth
     ```bash
     php artisan ui:auth
@@ -77,19 +77,19 @@
     
     INFO  Authentication scaffolding generated successfully.
    ```
-  
+
 - 删除 home.blade.php 和 HomeController.php
     ```bash
     rm app/Http/Controllers/HomeController.php
     rm resources/views/home.blade.php
     ```
-  
+
 - 提交代码
     ```bash
     git add .
     git commit -m "生成用户认证代码"
     ```
-  
+
 - 修改本地化支持日语
     ```dotenv
     APP_LOCALE=ja
@@ -103,4 +103,15 @@
     ```bash
     git add .
     git commit -m "修改本地化支持日语"
+    ```
+
+- Laravel 清楚所有缓存
+    ```bash
+    php artisan optimize:clear
+    ```
+
+- 修复跳转链接
+    ```bash
+    git add .
+    git commit -m "修复跳转链接"
     ```
