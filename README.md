@@ -49,3 +49,18 @@
     php artisan ui bootstrap
     npm install
     ```
+  
+- 修改 [package.json](package.json) 文件中的引入, 我们的项目使用 yarn 来管理前端资源, 修改完成之后运行
+    ```bash
+    rm package-lock.json
+    rm -rf node_modules
+    yarn install
+    yarn add @fortawesome/fontawesome-free
+    ```
+  
+- 提交代码
+    ```bash
+    git add .
+    git commit -m "增加字体图标, 该用 yarn 来管理前端资源"
+    git push
+    ```
