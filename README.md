@@ -64,3 +64,28 @@
     git commit -m "增加字体图标, 该用 yarn 来管理前端资源"
     git push
     ```
+  
+- 安装 laravel ui:auth
+    ```bash
+    php artisan ui:auth
+
+    The [layouts/app.blade.php] view already exists. Do you want to replace it? (yes/no) [no]
+    ❯
+    
+    The [Controller.php] file already exists. Do you want to replace it? (yes/no) [yes]
+    ❯
+    
+    INFO  Authentication scaffolding generated successfully.
+   ```
+  
+- 删除 home.blade.php 和 HomeController.php
+    ```bash
+    rm app/Http/Controllers/HomeController.php
+    rm resources/views/home.blade.php
+    ```
+  
+- 提交代码
+    ```bash
+    git add .
+    git commit -m "生成用户认证代码"
+    ```
