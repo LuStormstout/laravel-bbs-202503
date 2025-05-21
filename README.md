@@ -41,6 +41,8 @@
   npm install bootstrap @popperjs/core
   ```
 
+---
+
 ### 2025/05/21
 
 - 安装 laravel/ui
@@ -115,3 +117,31 @@
     git add .
     git commit -m "修复跳转链接"
     ```
+
+- 安装 [mews/captcha](https://github.com/mewebstudio/captcha)
+    ```bash
+    composer require mews/captcha
+    php artisan vendor:publish --provider='Mews\Captcha\CaptchaServiceProvider'
+    ```
+- 在 [providers.php](bootstrap/providers.php) 中添加
+    ```php
+    return [
+        // ...
+        Mews\Captcha\CaptchaServiceProvider::class
+    ];
+    ```
+- 在 [app.php](config/app.php) 中添加
+    ```php
+    'aliases' => [
+        // ...
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
+    ],
+    ```
+
+- 提交代码
+    ```bash
+    git add .
+    git commit -m "安装验证码"
+    ```
+  
+
