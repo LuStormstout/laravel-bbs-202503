@@ -89,3 +89,18 @@
     git add .
     git commit -m "生成用户认证代码"
     ```
+  
+- 修改本地化支持日语
+    ```dotenv
+    APP_LOCALE=ja
+    APP_FALLBACK_LOCALE=ja
+    APP_FAKER_LOCALE=ja_JP
+    ```
+    ```bash
+    composer require laravel-lang/common
+    php artisan lang:add ja
+    ```
+    ```bash
+    git add .
+    git commit -m "修改本地化支持日语"
+    ```
