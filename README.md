@@ -181,3 +181,26 @@
     }
     ```
 
+- 创建 users 控制器
+    ```bash
+    php artisan make:controller UsersController
+    ```
+  
+- 创建一个数据迁移文件给 users 表添加 avatar 和 introduction
+    ```bash
+    php artisan make:migration add_avatar_and_introduction_to_users_table --table=users
+    php artisan migrate
+    ```
+  
+- 创建 UserRequest
+    ```bash
+    php artisan make:request UserRequest
+    ```
+  
+- 在创建完 UserRequest 之后需要去修改一下默认的授权策略
+    ```php
+    public function authorize()
+    {
+        return true;
+    }
+    ```
