@@ -150,7 +150,7 @@
     ```php
     auth()->user()->hasVerifiedEmail();
     ```
-  
+
 - 创建邮箱验证成功后的事件
     ```bash
     php artisan make:listener EmailVerified
@@ -160,7 +160,7 @@
     ```bash
     php artisan event:list
     ```
-  
+
 - 创建完成之后在 [app/Listeners/EmailVerified.php](app/Listeners/EmailVerified.php) 中去做你想要的事情
     ```php
     public function handle(Verified $event)
@@ -168,7 +168,7 @@
         session()->flash('success', 'Your email address has been verified.');
     }
     ```
-  
+
 - 最后要在 [AppServiceProvider.php](app/Providers/AppServiceProvider.php) 中注册事件监听
     ```php
     public function boot(): void
@@ -185,18 +185,18 @@
     ```bash
     php artisan make:controller UsersController
     ```
-  
+
 - 创建一个数据迁移文件给 users 表添加 avatar 和 introduction
     ```bash
     php artisan make:migration add_avatar_and_introduction_to_users_table --table=users
     php artisan migrate
     ```
-  
+
 - 创建 UserRequest
     ```bash
     php artisan make:request UserRequest
     ```
-  
+
 - 在创建完 UserRequest 之后需要去修改一下默认的授权策略
     ```php
     public function authorize()
@@ -218,13 +218,30 @@
     ```bash
     php artisan make:policy UserPolicy --model=User
     ```
-  
+
 - 我们到目前为止学习了 Laravel 中的:
-  - 中间件: 请求和响应之间进行处理, 例如验证用户是否登录, 检查用户权限等.
-  - 事件和监听器: 应用程序中触发事件, 并在事件发生时执行相应的操作.
-  - 授权策略: 应用程序中定义用户的权限, 并在应用程序中进行权限验证.
-  - 请求验证: 应用程序中对用户的请求进行验证, 确保用户提交的数据是合法的.
-  - 数据迁移: 应用程序中对数据库进行操作, 例如创建表, 修改表结构等.
-  - 本地化: 应用程序中支持多种语言, 并在应用程序中进行语言切换.
-  - Eloquent ORM : 应用程序中对数据库进行操作, 例如查询数据, 插入数据, 更新数据等.
-  - 数据生成和数据填充: 应用程序中生成测试数据, 例如用户数据, 文章数据等.
+    - 中间件: 请求和响应之间进行处理, 例如验证用户是否登录, 检查用户权限等.
+    - 事件和监听器: 应用程序中触发事件, 并在事件发生时执行相应的操作.
+    - 授权策略: 应用程序中定义用户的权限, 并在应用程序中进行权限验证.
+    - 请求验证: 应用程序中对用户的请求进行验证, 确保用户提交的数据是合法的.
+    - 数据迁移: 应用程序中对数据库进行操作, 例如创建表, 修改表结构等.
+    - 本地化: 应用程序中支持多种语言, 并在应用程序中进行语言切换.
+    - Eloquent ORM : 应用程序中对数据库进行操作, 例如查询数据, 插入数据, 更新数据等.
+    - 数据生成和数据填充: 应用程序中生成测试数据, 例如用户数据, 文章数据等.
+
+- 生成 category 模型
+    ```bash
+    php artisan make:model Category -mcr
+    ```
+    - -m 表示生成数据迁移文件, -c 表示生成控制器, -r 表示生成资源控制器.
+
+- 生成 category 表的初始化数据 migration
+    ```bash
+    php artisan make:migration seed_categories_data
+    ```
+    - 因为帖子分类应该是项目初始化的时候就要准备好的数据, 是我们项目的一部分, 所以我们没有像之前那样使用 seeder 来生成数据, 而是直接在 migration 中生成数据. seeder 是用来生成测试数据的, 而 migration 是用来生成项目的一部分数据的.
+
+- 运行数据迁移
+    ```bash
+    php artisan migrate
+    ```
