@@ -295,7 +295,7 @@
     php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
     ```
 
-### 📅 2025/05/21
+### 📅 2025/06/02
      
 - 安装 mews/purifier
     ```bash
