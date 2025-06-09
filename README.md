@@ -337,6 +337,10 @@
     ```bash
     php artisan horizon
     ```
+  - 或者使用
+    ```bash
+    php artisan queue:listen
+    ```
   
 - 访问
     ```
