@@ -148,4 +148,18 @@ class Topic extends Model
         $params = array_merge([$this->id, $this->slug], $params);
         return route('topics.show', $params);
     }
+
+    /**
+     * Update the reply count for the topic.
+     *
+     * This method counts the number of replies associated with the topic
+     * and updates the reply_count attribute accordingly.
+     *
+     * @return void
+     */
+    public function updateReplyCount(): void
+    {
+        $this->reply_count = $this->replies->count();
+        $this->save();
+    }
 }
