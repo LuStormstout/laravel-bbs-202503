@@ -323,7 +323,7 @@
     ```bash
     php artisan queue:listen
     ```
-  
+
 - 安装 laravel/horizon
     ```bash
     composer require laravel/horizon
@@ -332,21 +332,21 @@
     ```bash
     php artisan vendor:publish --provider="Laravel\Horizon\HorizonServiceProvider"
     ```
-  
+
 - 启动 Horizon
     ```bash
     php artisan horizon
     ```
-  - 或者使用
-    ```bash
-    php artisan queue:listen
-    ```
-  
+    - 或者使用
+      ```bash
+      php artisan queue:listen
+      ```
+
 - 访问
     ```
     http://localhost:8000/horizon
     ```
-  
+
 - 在生产环境中使用 Horizon
     - 使用 Supervisor 进程工具进行管理，配置和使用请参照 文档 进行配置；
     - 每一次部署代码时，需 artisan horizon:terminate 然后再 artisan horizon 重新加载代码。
@@ -355,7 +355,7 @@
     ```bash
     php artisan make:model Reply -a -s -p
     ```
-  
+
 - 执行数据迁移 -d memory_limit=512M 临时增加内存限制
     ```bash
     php -d memory_limit=512M artisan migrate:fresh --seed
@@ -372,12 +372,12 @@
     ```bash
     php artisan notifications:table
     ```
-  
+
 - 给 users 表添加 notification_count 字段
     ```bash
     php artisan make:migration add_notification_count_to_users_table --table=users
     ```
-  
+
 - 创建 TopicReplied 通知
     ```bash
     php artisan make:notification TopicReplied
@@ -398,21 +398,21 @@
     ```bash
     composer require spatie/laravel-permission
     ```
-  
+
 - 发布配置文件
     ```bash
     php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
     ```
-  
-- 基于角色的权限管理 RBAC 
+
+- 基于角色的权限管理 RBAC
     - RBAC 是 Role-Based Access Control 的缩写, 是一种基于角色的权限管理方式.
     - 在 RBAC 中, 用户被分配到一个或多个角色, 每个角色拥有一组权限.
     - 通过角色来管理用户的权限, 例如: 普通用户只能发布文章, 管理员可以管理所有用户等.
-  - 每个公司都有自己的角色和权限
-    - 会计: 管理公司财务 - 对应在公司内部的管理后台的话他就可以查看和管理公司的财务数据
-    - 人事: 负责招聘和员工管理 - 查看出勤记录, 访问和编辑员工信息等
-    - 销售: 负责销售和客户关系 - 查看和编辑客户信息, 处理订单等
-    - 技术: 负责技术支持和产品开发 - 可能会有更高的权限, 可以访问和编辑公司的技术文档, 处理技术问题等
+    - 每个公司都有自己的角色和权限
+        - 会计: 管理公司财务 - 对应在公司内部的管理后台的话他就可以查看和管理公司的财务数据
+        - 人事: 负责招聘和员工管理 - 查看出勤记录, 访问和编辑员工信息等
+        - 销售: 负责销售和客户关系 - 查看和编辑客户信息, 处理订单等
+        - 技术: 负责技术支持和产品开发 - 可能会有更高的权限, 可以访问和编辑公司的技术文档, 处理技术问题等
 
 - 我们使用了 spatie/laravel-permission 扩展来管理用户的角色和权限
     - 用户表 `users` 存储用户的基本信息, 例如用户名, 邮箱, 密码等
@@ -427,8 +427,29 @@
     ```bash
     php artisan make:migration seed_roles_and_permissions_data
     ```
-  
+
 - 使用 lab404/laravel-impersonate 来实现用户的模拟登录功能, 方便在开发和测试过程中模拟其他用户的操作
     ```bash
     composer require lab404/laravel-impersonate
     ```
+
+### 📅 2025/06/17
+
+- 创建 pandaria:calculate-active-user 命令
+    ```bash
+    php artisan make:command CalculateActiveUser --command=pandaria:calculate-active-user
+    ```
+
+- 运行
+    ```bash
+    php artisan pandaria:calculate-active-user
+    ```
+
+- macOS 打开定时任务配置文件
+    ```bash
+    crontab -e
+    ```
+    - 添加定时任务 (请注意项目的绝对路径要替换成你自己的)
+        ```
+        * * * * * cd /Library/WebServer/Documents/cod/laravel-project-202503/laravel-bbs-202503 && php artisan schedule:run >> /dev/null 2>&1
+        ```
