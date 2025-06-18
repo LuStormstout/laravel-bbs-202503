@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Listeners\EmailVerified;
+use App\Models\Link;
 use App\Models\Reply;
 use App\Models\Topic;
+use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
 use Illuminate\Pagination\Paginator;
@@ -37,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
         // https://laravel.com/docs/12.x/eloquent#model-observers
         Topic::observe(TopicObserver::class);
         Reply::observe(ReplyObserver::class);
+        Link::observe(LinkObserver::class);
 
         // 使用 Bootstrap 样式的分页器
         Paginator::useBootstrap();
