@@ -7,11 +7,6 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
-                'resources/editor/css/simditor.css',
-                'resources/editor/js/module.js',
-                'resources/editor/js/hotkeys.js',
-                'resources/editor/js/uploader.js',
-                'resources/editor/js/simditor.js',
             ],
             refresh: true,
         }),
